@@ -1,1 +1,18 @@
-https://phpenthusiast.com/blog/develop-angular-php-app-getting-the-list-of-items
+- Guida:
+    https://phpenthusiast.com/blog/develop-angular-php-app-getting-the-list-of-items
+
+- Sottolink:
+    Observable: https://phpenthusiast.com/blog/what-is-observable-in-angular
+
+    Access-Control-Allow-Origin header:
+        https://www.freecodecamp.org/news/access-control-allow-origin-header-explained/
+
+    Convalidazione form: https://angular.io/guide/form-validation
+
+    Number input pattern generator: https://3widgets.com/
+
+
+
+
+
+https://phpenthusiast.com/blog/angular-php-app-httpclientmodule-delete-method
