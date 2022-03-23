@@ -21,8 +21,8 @@
                class="form-control"
                required
                min="1"
-              max="99999"
-              pattern="([1-9]|[1-9][0-9]{1,4})"
+               max="99999"
+               pattern="([1-9]|[1-9][0-9]{1,4})"
                #price="ngModel"
                [ngClass]="{ 'is-invalid': price.touched && price.invalid }">
       </div>
@@ -32,6 +32,10 @@
                class="btn btn-success btn-sm"
                [disabled]="model.invalid || price.invalid"
                (click)="updateCar(model, price, item.id)">
+        <input type="button"
+               value="Delete"
+               class="btn btn-danger btn-sm"
+               (click)="deleteCar(item.id? item.id:0)">
       </div>
     </div>
   </div>

@@ -20,6 +20,11 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.getCars();
   }
+
+  resetAlerts() {
+    this.error = '';
+    this.success = '';
+  }
         
   getCars(): void {
     this.carService.getAll().subscribe(
@@ -41,7 +46,6 @@ export class AppComponent implements OnInit {
       (res: Car) => {
         // Update the list of cars
         this.cars.push(res);
-        console.log(res);
 
         // Inform the user
         this.success = 'Created successfully';
@@ -64,8 +68,17 @@ export class AppComponent implements OnInit {
     );
   }
 
-  resetAlerts() {
-    this.error = '';
-    this.success = '';
+  deleteCar(id: number) {
+    this.resetAlerts();
+    this.carService.delete(id).subscribe(
+      (res) => {
+        this.cars = this.cars.filter(function (item) {
+          return item['id'] && +item['id'] !== +id; //controlla se questo item è diverso da quello eliminato. Se è diverso, allora lo tiene nella lista sennò non lo salva
+        });
+
+        this.success = 'Deleted successfully';
+      },
+      (err) => this.error = err
+    );
   }
 }

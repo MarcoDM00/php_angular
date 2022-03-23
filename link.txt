@@ -11,8 +11,4 @@
 
     Number input pattern generator: https://3widgets.com/
 
-
-
-
-
-https://phpenthusiast.com/blog/angular-php-app-httpclientmodule-delete-method
+https://www.freewebsolution.it/laravel-e-jwt-realizzare-un-sistema-di-autenticazione/
