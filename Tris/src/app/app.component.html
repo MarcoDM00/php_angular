@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div style="text-align: center;">
+    <h1>Tris</h1>
+    <label style="font-size: 40px;">Turno:</label>
+    <img [src]="'../assets/' + turno + '.png'" width="100px" height="100px">
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(3, 3fr); grid-template-rows: repeat(3, 5fr);">
+    <div *ngFor="let c of caselle; index as i" (click)="click(i)" class="casella" [style.background-color]="c.bck">
+      <img [hidden]="c.nascondi" [src]="'../assets/' + c.src + '.png'" width="100%" height="100%">
+    </div>
+</div>
+</body>
+</html>
