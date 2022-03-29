@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ServerService } from './server.service';
+import { Record } from './record';
 
 @Component({
   selector: 'app-root',
@@ -10,12 +12,24 @@ export class AppComponent {
   turno:number = 1;
   mosse:number = 0;
   win:boolean = false;
+  records:Record[] = [];
+  success:string = "";
+  error:string = "";
 
-  constructor() {
+  constructor(private server: ServerService) {
     for (let i = 0; i < 9; i++) {
-      this.caselle.push({src:0, nascondi:true, bck:""});
+      this.caselle.push({src:1, nascondi:true, bck:""});
     }
     this.turno = Math.floor(Math.random() * 2) + 1;
+    this.server.getAll().subscribe(
+      (data: any) => {
+        this.records = data;
+        this.success = 'successful retrieval of the list';
+      },
+      (err) => {
+        this.error = err.error;
+      }
+    );
   }
 
   click(id:number) {
@@ -48,5 +62,11 @@ export class AppComponent {
   vinto(ids:number[]) {
     for (let i = 0; i < 3; i++) this.caselle[ids[i]].bck = "coral";
     this.win = true;
+    
+  }
+
+  resetEsiti() {
+    this.success = "";
+    this.error = "";
   }
 }
