@@ -19,8 +19,9 @@ export class ServerService {
     );
   }
 
-  store(rc: Record) {
-    return this.http.post(`${this.baseUrl}/put`, {data: rc}).pipe(
+  store(nMosse: number, win:number) {
+    const params = new HttpParams().set('nMosse', nMosse).set('win', win);
+    return this.http.post(`${this.baseUrl}/post`, {data: nMosse}).pipe(
       map((res: any) => {
         return res['data'];
       })

@@ -18,18 +18,10 @@ export class AppComponent {
 
   constructor(private server: ServerService) {
     for (let i = 0; i < 9; i++) {
-      this.caselle.push({src:1, nascondi:true, bck:""});
+      this.caselle.push({src:0, nascondi:true, bck:""});
     }
     this.turno = Math.floor(Math.random() * 2) + 1;
-    this.server.getAll().subscribe(
-      (data: any) => {
-        this.records = data;
-        this.success = 'successful retrieval of the list';
-      },
-      (err) => {
-        this.error = err.error;
-      }
-    );
+    this.getRecords();
   }
 
   click(id:number) {
@@ -37,9 +29,9 @@ export class AppComponent {
     if (this.caselle[id].src != 0) return;
     this.caselle[id].src = this.turno;
     this.caselle[id].nascondi = false;
-    this.turno = this.turno == 1 ? 2 : 1;
     this.mosse++;
     this.controllo();
+    if (!this.win) this.turno = this.turno == 1 ? 2 : 1;
   }
 
   controllo() {
@@ -62,7 +54,34 @@ export class AppComponent {
   vinto(ids:number[]) {
     for (let i = 0; i < 3; i++) this.caselle[ids[i]].bck = "coral";
     this.win = true;
-    
+    this.addRecord();
+  }
+
+  getRecords() {
+    this.server.getAll().subscribe(
+      (data: any) => {
+        this.records = data;
+        this.success = 'successful retrieval of the list';
+      },
+      (err) => {
+        this.error = err.error;
+      }
+    );
+  }
+
+  addRecord() {
+    this.resetEsiti();
+
+    this.server.store(this.mosse, this.turno).subscribe(
+      (res: Record) => {
+        // Update the list of records
+        this.records.push(res);
+
+        // Inform the user
+        this.success = 'Created successfully';
+      },
+      (err) => (this.error = err.message)
+    );
   }
 
   resetEsiti() {
