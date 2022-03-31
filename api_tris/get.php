@@ -11,6 +11,7 @@ if ($result = mysqli_query($con,$sql)) {
   $n = 0;
   while ($row = mysqli_fetch_assoc($result))   {
     $records[$n]['id']    = $row['id'];
+	$records[$n]['win']    = $row['vincitore'];
     $records[$n]['nMosse'] = $row['nMosse'];
     $records[$n]['data'] = $row['data'];
     $n++;

@@ -73,9 +73,10 @@ export class AppComponent {
     this.resetEsiti();
 
     this.server.store(this.mosse, this.turno).subscribe(
-      (res: Record) => {
+      (res: any) => {
         // Update the list of records
-        this.records.push(res);
+        //this.records.push(res);
+        alert(res.win);
 
         // Inform the user
         this.success = 'Created successfully';

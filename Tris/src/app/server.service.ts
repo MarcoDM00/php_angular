@@ -20,8 +20,9 @@ export class ServerService {
   }
 
   store(nMosse: number, win:number) {
-    const params = new HttpParams().set('nMosse', nMosse).set('win', win);
-    return this.http.post(`${this.baseUrl}/post`, {data: nMosse}).pipe(
+    //const params = new HttpParams().set('nMosse', nMosse).set('win', win);
+    var data = {w: win, n: nMosse};
+    return this.http.post(`${this.baseUrl}/post`, {data: data}).pipe(
       map((res: any) => {
         return res['data'];
       })

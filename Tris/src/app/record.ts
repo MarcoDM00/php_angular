@@ -1,6 +1,6 @@
 export interface Record {
     id?: number;
-    nMosse: number;
     win: number;
+    nMosse: number;
     data: string;
 }

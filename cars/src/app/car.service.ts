@@ -7,7 +7,7 @@ import { Car } from './car';
   providedIn: 'root'
 })
 export class CarService {
-  baseUrl = 'http://localhost/api';
+  baseUrl = 'http://localhost/api_cars';
 
   constructor(private http:HttpClient) {}
 
