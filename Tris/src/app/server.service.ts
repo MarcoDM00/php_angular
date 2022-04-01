@@ -20,7 +20,6 @@ export class ServerService {
   }
 
   store(nMosse: number, win:number) {
-    //const params = new HttpParams().set('nMosse', nMosse).set('win', win);
     var data = {w: win, n: nMosse};
     return this.http.post(`${this.baseUrl}/post`, {data: data}).pipe(
       map((res: any) => {
@@ -29,8 +28,8 @@ export class ServerService {
     );
   }
 
-  delete(id: any) {
+  delete(id: number) {
     const params = new HttpParams().set('id', id.toString());
-    return this.http.delete(`${this.baseUrl}/delete`, { params: params });
+    return this.http.delete(`${this.baseUrl}/delete`, {params: params});
   }
 }

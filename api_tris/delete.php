@@ -10,7 +10,7 @@ if(!$id) {
 }
 
 // Delete.
-$sql = "DELETE FROM records WHERE `id` ='{$id}' LIMIT 1";
+$sql = "DELETE FROM records WHERE id ='{$id}' LIMIT 1";
 
 if(mysqli_query($con, $sql)) {
   http_response_code(204);
